@@ -1,7 +1,7 @@
 # EasyConsoleCommands
 A framework for commands in a console application. Includes some basic commands and scripting ability. 
 It is basically a command parser with extra features (scripting, permanent variables, etc...).
-All Example files are in the Github-Repo: https://github.com/Mocbuilder/CommandConsole
+All Example files are in the Github-Repo: https://github.com/Mocbuilder/EasyConsoleCommands
 
 ## Syntax
 The syntax is really simple. First, all commands are uncapitalised. Second, if a command takes a variable, it is added with a ```-``` and then the variable, with no spaces. Command-specific examples are in the 'Commands' section.

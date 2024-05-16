@@ -10,7 +10,7 @@
     <Description>A framework for commands in a console application. Includes some basic commands and scripting ability. 
 It is basically a command parser with extra features (scripting, permanent variables, etc...).</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/Mocbuilder/CommandConsole</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Mocbuilder/EasyConsoleCommands</RepositoryUrl>
     <IncludeSymbols>False</IncludeSymbols>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
