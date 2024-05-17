@@ -1,5 +1,6 @@
 # ECC - EasyConsoleCommands Documentation
 ECC is a simple, self-scaling command-based system for console applications that comes with some simple base-commands and allows creation of costum commands. It also has a basic scripting ability with permanent variables etc.
+Full Documentation is also available [here](https://mocbuilder.github.io/EasyConsoleCommands/).
 
 # Components
 ## 1. Users
@@ -105,7 +106,7 @@ Commands.Add(new CommandExample(client));
 ```
 
 ## Credits
-Idea, Design and Programming			    Mocbuilder (Mocbuilder Coding Creations) aka Me
+Idea, Design and Programming			    [Mocbuilder (Mocbuilder Coding Creations) aka Me](https://linktr.ee/mocbuildercodingcreations)
 
 Base-Code of the "hacker"-command			CollegeCode (https://www.youtube.com/watch?v=eWceJNkxbdU)
 
