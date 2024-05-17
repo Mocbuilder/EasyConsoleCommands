@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECC - EasyConsoleCommands Documentation</title>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    <style>
+        body {
+            background-color: #060606;
+            color: #c9d1d9;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #58a6ff;
+        }
+        pre {
+            background-color: #2d2d2d;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            color: #dcdcaa;
+        }
+        a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .credits {
+            margin-top: 40px;
+        }
+		.logo {
+			display: block;
+			margin: 0 auto 20px auto;
+			max-width: 100%;
+			height: auto;
+		}
+    </style>
+</head>
+<body>
+    <div class="container">
+		<img src="ecc_logo_2x.jpg" alt="ECC Logo" class="logo">
+        <h1>ECC - EasyConsoleCommands Documentation</h1>
+        <p>ECC is a simple, self-scaling command-based system for console applications that comes with some simple base-commands and allows creation of custom commands. It also has a basic scripting ability with permanent variables etc.</p>
+        
+        <h2>Components</h2>
+        
+        <h3>1. Users</h3>
+        <p>The user can interact with the system by entering commands into the console. These commands always follow the same format. A full list of all registered commands (including your custom ones) is available with the <code>help</code> command.</p>
+        <p><strong>Example</strong></p>
+        <pre><code>// Command with no variables, e.g. "help"
+help
+
+// Commands with variables, e.g. "color" (sets font color, takes valid ConsoleColor as parameter)
+// Parameters are given behind a "-"
+color-red
+
+// Commands with multiple parameters, e.g. "alias" (sets alias for a command, takes current command name and new name as input)
+// Multiple parameters are also separated by "-"
+alias-color-changeFontColor
+
+// Commands that take raw user input take it the same way as a parameter
+        </code></pre>
+        
+        <h3>2. Developers: Scripting</h3>
+        <p>When using ECC in your framework you can also write simple scripts with it (An example script is in the Example.txt). It basically works by writing the commands that you would use in the console line by line in a .txt file and then executing it with the <code>script</code> command.</p>
+        <p><strong>Example</strong></p>
+        <pre><code>// This is your script in a .txt
+print-Hello World
+color-red
+print-This is printed in red!
+color-white
+print-This is printed in white again!
+
+// This will be the output
+script-path/to/your/script.txt
+Hello World
+This is printed in red!
+This is printed in white again!
+        </code></pre>
+        <p>Scripting can be useful when you want to execute the same commands over and over again (e.g., to set up your environment with font color, variables etc.) or even to write small programs like a calculator or similar.</p>
+        
+        <h3>3. Developers: Creating a Custom Command</h3>
+        <p>To create a custom command you need to make a class that inherits from the Interface <code>ICommand</code> provided by ECC. The Interface has the following structure:</p>
+        <pre><code>class CommandExample : ICommand
+{
+    // This is the keyword for your command
+    public string Name => "example"; 
+
+    // This should explain your command briefly and mention all the needed parameters
+    public string HelpText => "It's just an example."; 
+
+    // This list should contain all the needed parameters as StringInfo, IntInfo or BoolInfo (Types provided by ECC). Here it takes two strings as parameters.
+    public List&lt;Type&gt; ParameterTypes => new List&lt;Type&gt; (typeof(IntInfo), typeof(IntInfo)); 
+
+    // The Execute function contains the logic for your command
+    // Set List&lt;VariableInfo&gt; as a parameter, to include your parameters
+    public void Execute(List&lt;VariableInfo&gt; inputParameters)
+    {
+        // To use a parameter, get it from the list. The first variable is Position 0, the second one is 1 and so on...
+        IntInfo firstParameter = inputParameters[0] as IntInfo;
+        IntInfo secondParameter = inputParameters[1] as IntInfo;
+
+        // Use it as (your variable name)firstParameter.Value to get the int value
+        int aNewNumber = firstParameter.Value + secondParameter.Value;
+        
+        Console.WriteLine("Your new number is: " + aNewNumber);
+    }
+}
+        </code></pre>
+        <p>Then, after creating your command class, register it with the framework.</p>
+        <pre><code>Commands.Add(new CommandExample());
+        </code></pre>
+        <p>To interact with the framework or pass any objects, write a constructor for our command class that takes the object and pass it with the registration.</p>
+        <pre><code>// In your command class, put it into a constructor
+class CommandExample : ICommand
+{
+    public string Name => "example"; 
+
+    public string HelpText => "It's just an example."; 
+
+    public List&lt;Type&gt; ParameterTypes => new List&lt;Type&gt; (typeof(IntInfo), typeof(IntInfo)); 
+
+    private HttpClient client;
+
+    public CommandExample(HttpClient client)
+    {
+        this.client = client;
+    }
+
+    public void Execute(List&lt;VariableInfo&gt; inputParameters)
+    {
+        // Do something with it...
+    }
+}
+
+// At the registration pass the object
+HttpClient client = new HttpClient();
+Commands.Add(new CommandExample(client));
+        </code></pre>
+        
+        <h2 class="credits">Credits</h2>
+        <p>Idea, Design and Programming by Mocbuilder (Mocbuilder Coding Creations) aka Me</p>
+        <p>Base-Code of the "hacker"-command by <a href="https://www.youtube.com/watch?v=eWceJNkxbdU" target="_blank">CollegeCode</a></p>
+        <p>Special Thanks to rmoc81 for helping me with the programming.</p>
+        <p>If you want to use this in any public way, a little credit would be appreciated.</p>
+    </div>
+</body>
+</html>
