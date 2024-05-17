@@ -46,6 +46,7 @@ namespace EasyConsoleCommands
             Commands.Add(new CommandAlias(this));
             Commands.Add(new CommandAdd());
             Commands.Add(new CommandSub());
+            Commands.Add(new CommandFont());
         }
 
 

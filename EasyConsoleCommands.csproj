@@ -15,6 +15,7 @@ It is basically a command parser with extra features (scripting, permanent varia
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<Version>1.1.0</Version>
 	<PackageReleaseNotes>Added more Documentation.</PackageReleaseNotes>
+	<OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,13 +24,13 @@ It is basically a command parser with extra features (scripting, permanent varia
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="README.md">
+    <None Update="UpdateNotes.md">
       <PackagePath>\</PackagePath>
       <Pack>True</Pack>
     </None>
-    <None Update="old-README.md">
-      <Pack>True</Pack>
+    <None Update="README.md">
       <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
     </None>
   </ItemGroup>
 
