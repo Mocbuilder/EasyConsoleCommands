@@ -1,5 +1,6 @@
 # ECC - EasyConsoleCommands Documentation
 ECC is a simple, self-scaling command-based system for console applications that comes with some simple base-commands and allows creation of costum commands. It also has a basic scripting ability with permanent variables etc.
+Full Documentation is also available [here](https://mocbuilder.github.io/EasyConsoleCommands/).
 
 # Components
 ## 1. Users
