@@ -16,6 +16,7 @@ It is basically a command parser with extra features (scripting, permanent varia
 	<Version>1.1.0</Version>
 	<PackageReleaseNotes>Added more Documentation.</PackageReleaseNotes>
 	<OutputType>Library</OutputType>
+	<PackageProjectUrl>https://mocbuilder.github.io/EasyConsoleCommands/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
