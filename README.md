@@ -1,6 +1,25 @@
 # ECC - EasyConsoleCommands Documentation
-ECC is a simple, self-scaling command-based system for console applications that comes with some simple base-commands and allows creation of costum commands. It also has a basic scripting ability with permanent variables etc.
+ECC is a simple, expandable command-based framework and command-parser for console applications that comes with some simple base-commands and allows creation of costum commands. It also has a basic scripting ability with permanent variables etc.
 Full Documentation is also available [here](https://mocbuilder.github.io/EasyConsoleCommands/).
+# Framework
+## 1. Start ECC
+To start ECC, make a instance of ```ECC``` and call ```.Start()``` on it. Now any user input will be interpreted by ECC. 
+**Example**
+```
+//Make sure the using directive is there
+using EasyConsoleCommands;
+
+//Inside your code, make a new Instance and call .Start()
+ECC yourInstance = new ECC();
+
+yourInstance.Start();
+```
+## 2. Stopping ECC
+Currently there isnt any integrated way to stop ECC from running without exiting the program, e.g. with the ```exit``` command. This is the case because ECC is intended to be used as the base-layer for the user interacting with the program.
+
+# 3. Disabeling built-in commands
+If you dont want your user to use a specific built-in command, e.g. to only make your costum commands available, the you can disable them.
+__WORK IN PROGRESS! COMING SOON!__
 
 # Components
 ## 1. Users
